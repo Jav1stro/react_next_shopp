@@ -12,7 +12,7 @@ const people = [
         department: 'BOCA',
         role: '9',
         email: 'pepe@p.com.ar',
-        image: '../../assets/spongebob.jpeg',
+        image: './spongebob.jpeg',
     },
   ];
   

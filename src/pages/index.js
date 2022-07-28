@@ -27,35 +27,6 @@ export default function Home() {
           </svg>
 
           <Popover>
-            <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
-              <nav className="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
-                <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
-                  <div className="flex items-center justify-between w-full md:w-auto">
-                    <a href="/login">
-                      <span className="sr-only">Workflow</span>
-                      <img className="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" />
-                    </a>
-                    <div className="-mr-2 flex items-center md:hidden">
-                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                        <span className="sr-only">Open main menu</span>
-                        <MenuIcon className="h-6 w-6" aria-hidden="true" />
-                      </Popover.Button>
-                    </div>
-                  </div>
-                </div>
-                <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-                  {navigation.map((item) => (
-                    <a key={item.name} href={item.href} className="font-medium text-gray-500 hover:text-gray-900">
-                      {item.name}
-                    </a>
-                  ))}
-                  <a href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
-                    Log in
-                  </a>
-                </div>
-              </nav>
-            </div>
-
             <Transition
               as={Fragment}
               enter="duration-150 ease-out"
@@ -124,11 +95,7 @@ export default function Home() {
         </div>
       </div>
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img
-          className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-          src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-          alt=""
-        />
+        <img className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="./spongebob.jpeg" alt="esponja" />
       </div>
     </div>
   );

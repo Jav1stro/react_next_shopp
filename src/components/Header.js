@@ -3,14 +3,15 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 
 const userData = {
-  name: 'Tom Cook',
+  name: 'Peter Gabriel',
   email: 'tom@example.com',
-  imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  imageUrl: './spongebob.jpeg',
 };
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Dashboard', href: '/dashboard', current: true },
   { name: 'Productos', href: '/dashboard/products/', current: false },
   { name: 'Ventas', href: '#', current: false },
+  { name: 'Log In', href: '/login', current: false }
 ];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -25,14 +26,16 @@ function classNames(...classes) {
 export default function Header() {
   return (
     <>
-      <Disclosure as="nav" className="bg-gray-800">
+      <Disclosure as="nav" className="bg-violet-800">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <img className="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow" />
+                    <a href='/'>
+                    <img className="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow"  />
+                    </a>
                   </div>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
@@ -40,7 +43,7 @@ export default function Header() {
                         <a
                           key={item.name}
                           href={item.href}
-                          className={classNames(item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium')}
+                          className={classNames(item.current ? 'bg-indigo-600 text-black' : 'bg-indigo-400 text-black hover:bg-indigo-500 hover:text-white ', 'px-3 py-2 rounded-md text-sm font-medium')}
                           aria-current={item.current ? 'page' : undefined}
                         >
                           {item.name}
