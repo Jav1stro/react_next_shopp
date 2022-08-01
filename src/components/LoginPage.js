@@ -1,13 +1,13 @@
 import { LockClosedIcon } from '@heroicons/react/solid';
 import { useRef, useState } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import { useAuth } from '@hooks/useAuth';
 
 export default function LoginPage() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const [errorLogin, setErrorLogin] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -24,8 +24,8 @@ export default function LoginPage() {
     aut
       .signIn(email, password)
       .then(() => {
+        console.log('Login correcto!');
         setLoading(true);
-        console.log('Success!!!')
         setTimeout(() => {
           router.push('/dashboard');
         }, 3000);
@@ -103,19 +103,20 @@ export default function LoginPage() {
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" disabled={loading}
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                disabled={loading}
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                   <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
                 </span>
                 Sign in
                 {loading && (
-                  <span className="flex absolute h-4 w-4 top-0 right-0 -mt-1 -mr-1">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-300 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-4 w-4 bg-indigo-400"></span>
+                  <span className="flex absolute h-6 w-6 -top-2 -right-4 ">
+                    <span className="animate-ping absolute inline-flex h-4 w-4 rounded-full bg-green-600 opacity-75"></span>
+                    <span className="flex content-center justify-center rounded-full h-4 w-4 bg-green-300"></span>
                   </span>
                 )}
-              </button >
+              </button>
             </div>
             {errorLogin && (
               <div className="p-3 mb-3 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">

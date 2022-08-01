@@ -4,13 +4,6 @@ import { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 
-const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-];
-
 export default function Home() {
   return (
     <div className="relative bg-white overflow-hidden">
@@ -48,13 +41,6 @@ export default function Home() {
                         <XIcon className="h-6 w-6" aria-hidden="true" />
                       </Popover.Button>
                     </div>
-                  </div>
-                  <div className="px-2 pt-2 pb-3 space-y-1">
-                    {navigation.map((item) => (
-                      <a key={item.name} href={item.href} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                        {item.name}
-                      </a>
-                    ))}
                   </div>
                   <a href="/login" className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
                     Log in

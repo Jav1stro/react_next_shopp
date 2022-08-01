@@ -1,17 +1,13 @@
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+import { useAuth } from '@hooks/useAuth';
 
-const userData = {
-  name: 'Peter Gabriel',
-  email: 'tom@example.com',
-  imageUrl: './spongebob.jpeg',
-};
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', current: true },
   { name: 'Productos', href: '/dashboard/products/', current: false },
-  { name: 'Ventas', href: '#', current: false },
-  { name: 'Log In', href: '/login', current: false }
+  { name: 'People', href: '/dashboard/people', current: false },
+  { name: 'Log In', href: '/login', current: false },
 ];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -24,6 +20,12 @@ function classNames(...classes) {
 }
 
 export default function Header() {
+  const auth = useAuth();
+  const userData = {
+    name: auth?.user?.name,
+    email: auth?.user?.email,
+    imageUrl: `https://ui-avatars.com/api/?name=${auth?.user?.name}`,
+  };
   return (
     <>
       <Disclosure as="nav" className="bg-violet-800">
@@ -33,8 +35,8 @@ export default function Header() {
               <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <a href='/'>
-                    <img className="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow"  />
+                    <a href="/">
+                      <img className="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow" />
                     </a>
                   </div>
                   <div className="hidden md:block">
@@ -43,7 +45,10 @@ export default function Header() {
                         <a
                           key={item.name}
                           href={item.href}
-                          className={classNames(item.current ? 'bg-indigo-600 text-black' : 'bg-indigo-400 text-black hover:bg-indigo-500 hover:text-white ', 'px-3 py-2 rounded-md text-sm font-medium')}
+                          className={classNames(
+                            item.current ? 'bg-indigo-600 text-black' : 'bg-indigo-400 text-black hover:bg-indigo-500 hover:text-white ',
+                            'px-3 py-2 rounded-md text-sm font-medium'
+                          )}
                           aria-current={item.current ? 'page' : undefined}
                         >
                           {item.name}
@@ -63,7 +68,7 @@ export default function Header() {
                     </button>
 
                     {/* Profile dropdown */}
-                    <Menu as="div" className="ml-3 relative">
+                    <Menu as="div" className="ml-3 relative z-10">
                       <div>
                         <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                           <span className="sr-only">Open user menu</span>
